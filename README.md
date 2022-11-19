@@ -13,43 +13,75 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 
 >>>     Step 1 — Setting Up the Flask Application
 
-mkdir /home/vit/Desktop/14-Docker-Flask
+sudo mkdir /home/vit/Desktop/14-Docker-Flask
    
-cd /home/vit/Desktop/14-Docker-Flas
+sudo cd /home/vit/Desktop/14-Docker-Flas
 
-mkdir -p app/static app/templates 
+sudo mkdir -p app/static app/templates 
 
-nano app/__init__.py
+sudo nano app/__init__.py
+
     from flask import Flask
     app = Flask(__name__)
     from app import views
 
-nano app/views.py
+sudo nano app/views.py
+
     from app import app
     @app.route('/')
         def home():
         return "hello world!"
 
-nano uwsgi.ini
+sudo nano uwsgi.ini
+
     [uwsgi]
     module = main
     callable = app
     master = true
 
-nano main.py
+sudo nano main.py
+
     from app import app
     
-nano requirements.txt
+sudo nano requirements.txt
+
     Flask>=2.0.2
 
-Current file structure be like that:
 
 
 >>>     Step 2 — Setting Up Docker
 
+sudo nano Dockerfile
+
+    FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine
+    RUN apk --update add bash nano
+    ENV STATIC_URL /static
+    ENV STATIC_PATH /var/www/app/static
+    COPY ./requirements.txt /var/www/requirements.txt
+    RUN pip install -r /var/www/requirements.txt
+
+sudo nc localhost 56733 < /dev/null; echo $?   #Checks open port, need be >1
+
+sudo nano start.sh       # a shell script that will build an image from the Dockerfile 
+                         # and create a container
+
+    #!/bin/bash
+    app="docker.test"
+    docker build -t ${app} .
+    docker run -d -p 56733:80 \
+      --name=${app} \
+      -v $PWD:/app ${app}
+
+sudo bash start.sh       # Execute the script to create the Docker image and build a container
+
+sudo docker ps
+
+http://ip-address:56733   # To check if it is running in a browser type http://localhost:56733
+
+Current file structure be like that:
+https://github.com/vi-u/14-Docker-Flask/blob/main/docker_flask_structure.txt
 
 
 
 
 
-Actual file structure be like that:
