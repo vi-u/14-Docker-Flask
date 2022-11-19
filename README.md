@@ -13,37 +13,42 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 
 >>>     Step 1 — Setting Up the Flask Application
 
-sudo mkdir /home/vit/Desktop/14-Docker-Flask
+    sudo mkdir 14-Docker-Flask
    
-sudo cd /home/vit/Desktop/14-Docker-Flas
+    sudo cd 14-Docker-Flas
 
-sudo mkdir -p app/static app/templates 
+    sudo mkdir -p app/static app/templates 
 
     sudo nano app/__init__.py
+which contains
 
     from flask import Flask
     app = Flask(__name__)
     from app import views
 
-sudo nano app/views.py
+    sudo nano app/views.py
+which contains
 
     from app import app
     @app.route('/')
         def home():
         return "hello world!"
 
-sudo nano uwsgi.ini
+    sudo nano uwsgi.ini
+which contains
 
     [uwsgi]
     module = main
     callable = app
     master = true
 
-sudo nano main.py
+    sudo nano main.py
+which contains
 
     from app import app
     
-sudo nano requirements.txt
+    sudo nano requirements.txt
+which contains
 
     Flask>=2.0.2
 
@@ -51,7 +56,8 @@ sudo nano requirements.txt
 
 >>>     Step 2 — Setting Up Docker
 
-sudo nano Dockerfile
+    sudo nano Dockerfile
+which contains
 
     FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine
     RUN apk --update add bash nano
@@ -62,11 +68,11 @@ sudo nano Dockerfile
 
 #To check if port 56733 is open run this command on server, it needs to be >1
 
-sudo nc localhost 56733 < /dev/null; echo $? 
+    sudo nc localhost 56733 < /dev/null; echo $? 
 
 #a shell script that will build an image from the Dockerfile and create a container
 
-sudo nano start.sh                            
+    sudo nano start.sh                            
 
     #!/bin/bash
     app="docker.test"
@@ -77,19 +83,19 @@ sudo nano start.sh
 
 #Execute the script to create the Docker image and build a container
 
-sudo bash start.sh       
+    sudo bash start.sh       
 
 #Check if it is open and running
 
-sudo docker ps
+    sudo docker ps
 
 #To verify if it is running in a browser type http://localhost:56733
 
-http://ip-address:56733   
+    http://ip-address:56733   
 
 *******
 
-Current file structure be like that:
+Current file structure is as follows:
 https://github.com/vi-u/14-Docker-Flask/blob/main/docker_flask_structure.txt
 
 
