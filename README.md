@@ -26,6 +26,7 @@ which contains
     app = Flask(__name__)
     from app import views
 
+   
     sudo nano app/views.py
 which contains
 
@@ -33,6 +34,7 @@ which contains
     @app.route('/')
         def home():
         return "hello world!"
+
 
     sudo nano uwsgi.ini
 which contains
@@ -42,11 +44,12 @@ which contains
     callable = app
     master = true
 
+
     sudo nano main.py
 which contains
 
     from app import app
-    
+.    
     sudo nano requirements.txt
 which contains
 
