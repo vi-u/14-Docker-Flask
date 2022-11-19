@@ -60,10 +60,13 @@ sudo nano Dockerfile
     COPY ./requirements.txt /var/www/requirements.txt
     RUN pip install -r /var/www/requirements.txt
 
-sudo nc localhost 56733 < /dev/null; echo $?   #Checks open port, need be >1
+#To check if port 56733 is open run this command on server, it needs to be >1
 
-sudo nano start.sh       # a shell script that will build an image from the Dockerfile 
-                         # and create a container
+sudo nc localhost 56733 < /dev/null; echo $?   
+
+# a shell script that will build an image from the Dockerfile and create a container
+
+sudo nano start.sh                            
 
     #!/bin/bash
     app="docker.test"
@@ -72,11 +75,19 @@ sudo nano start.sh       # a shell script that will build an image from the Dock
       --name=${app} \
       -v $PWD:/app ${app}
 
-sudo bash start.sh       # Execute the script to create the Docker image and build a container
+# Execute the script to create the Docker image and build a container
+
+sudo bash start.sh       
+
+#Check if it is open and running
 
 sudo docker ps
 
-http://ip-address:56733   # To check if it is running in a browser type http://localhost:56733
+# To verify if it is running in a browser type http://localhost:56733
+
+http://ip-address:56733   
+
+*******
 
 Current file structure be like that:
 https://github.com/vi-u/14-Docker-Flask/blob/main/docker_flask_structure.txt
