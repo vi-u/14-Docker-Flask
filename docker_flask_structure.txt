@@ -1,0 +1,22 @@
+
+14-Docker-Flask        #home/vit/Desktop/14-Docker-Flask
+|
+|---app
+|   |---static
+|   |   |---           #None yet
+|   |
+|   |---templates
+|   |   |---home.html  #Holds web pages, forms, outputs
+|   |
+|   |---__init__.py    #Creates Flask Instance
+|   |
+|   |---views.py       #Contains most of app logic
+|
+|
+|---uwsgi.ini          #Contains Server configuration
+| 
+|---main.py            #Was configured by uwsgi.ini
+|
+|---requirements.txt   
+
+
