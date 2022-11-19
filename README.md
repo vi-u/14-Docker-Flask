@@ -19,7 +19,7 @@ sudo cd /home/vit/Desktop/14-Docker-Flas
 
 sudo mkdir -p app/static app/templates 
 
-sudo nano app/__init__.py
+    sudo nano app/__init__.py
 
     from flask import Flask
     app = Flask(__name__)
