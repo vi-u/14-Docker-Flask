@@ -20,23 +20,24 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
     sudo mkdir -p app/static app/templates 
 
     sudo nano app/__init__.py
-which contains
+#which contains
 
     from flask import Flask
     app = Flask(__name__)
     from app import views
 
-   
+#   
     sudo nano app/views.py
-which contains
+#which contains
 
     from app import app
     @app.route('/')
         def home():
         return "hello world!"
 
-
+#
     sudo nano uwsgi.ini
+
 which contains
 
     [uwsgi]
@@ -44,14 +45,14 @@ which contains
     callable = app
     master = true
 
-
+#
     sudo nano main.py
-which contains
+#which contains
 
     from app import app
-.    
+#    
     sudo nano requirements.txt
-which contains
+#which contains
 
     Flask>=2.0.2
 
@@ -60,7 +61,7 @@ which contains
 >>>     Step 2 — Setting Up Docker
 
     sudo nano Dockerfile
-which contains
+#which contains
 
     FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine
     RUN apk --update add bash nano
@@ -76,6 +77,7 @@ which contains
 #a shell script that will build an image from the Dockerfile and create a container
 
     sudo nano start.sh                            
+#which contains
 
     #!/bin/bash
     app="docker.test"
