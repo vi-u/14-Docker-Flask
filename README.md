@@ -62,9 +62,9 @@ sudo nano Dockerfile
 
 #To check if port 56733 is open run this command on server, it needs to be >1
 
-sudo nc localhost 56733 < /dev/null; echo $?   
+sudo nc localhost 56733 < /dev/null; echo $? 
 
-# a shell script that will build an image from the Dockerfile and create a container
+#a shell script that will build an image from the Dockerfile and create a container
 
 sudo nano start.sh                            
 
@@ -75,7 +75,7 @@ sudo nano start.sh
       --name=${app} \
       -v $PWD:/app ${app}
 
-# Execute the script to create the Docker image and build a container
+#Execute the script to create the Docker image and build a container
 
 sudo bash start.sh       
 
@@ -83,7 +83,7 @@ sudo bash start.sh
 
 sudo docker ps
 
-# To verify if it is running in a browser type http://localhost:56733
+#To verify if it is running in a browser type http://localhost:56733
 
 http://ip-address:56733   
 
