@@ -12,13 +12,13 @@ As a prerequisite, you need to install Docker, you may use following tutorial:
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 
 >>>     Step 1 — Setting Up the Flask Application
-
+#
     sudo mkdir 14-Docker-Flask
-   
+#   
     sudo cd 14-Docker-Flas
-
+#
     sudo mkdir -p app/static app/templates 
-
+#
     sudo nano app/__init__.py
 #which contains
 
@@ -34,17 +34,14 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
     @app.route('/')
         def home():
         return "hello world!"
-
 #
     sudo nano uwsgi.ini
-
-which contains
+#which contains
 
     [uwsgi]
     module = main
     callable = app
     master = true
-
 #
     sudo nano main.py
 #which contains
@@ -66,9 +63,9 @@ which contains
     FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine
     RUN apk --update add bash nano
     ENV STATIC_URL /static
-    ENV STATIC_PATH /var/www/app/static
+    ENV STATIC_PATH /home/vit/Desktop/14-Docker-Flask/app/static
     COPY ./requirements.txt /var/www/requirements.txt
-    RUN pip install -r /var/www/requirements.txt
+    RUN pip install -r /home/vit/Desktop/14-Docker-Flask/requirements.txt
 
 #To check if port 56733 is open run this command on server, it needs to be >1
 
