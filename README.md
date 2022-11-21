@@ -1,15 +1,5 @@
 # 14-Docker-Flask
->>>> Create Docker Flask Template
-
-We will use Digital Ocean tutorial to make a Docker ready for installation Flask app on a proper cloud-based server.
-
-"How To Build and Deploy a Flask Application Using Docker on Ubuntu 20.04"
-https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-20-04
-
-As a prerequisite, you need to install Docker, you may use following tutorial:
-
-"How To Install and Use Docker on Ubuntu 20.04"
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+>>>> Create Simple Docker Flask App
 
 >>>     Step 1 — Setting Up the Flask Application
 #
@@ -100,7 +90,16 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 Current file structure is as follows:
 https://github.com/vi-u/14-Docker-Flask/blob/main/docker_flask_structure.txt
 
+*****
 
+We used Digital Ocean tutorial to make a Docker ready for installation Flask app on a proper cloud-based server.
 
+"How To Build and Deploy a Flask Application Using Docker on Ubuntu 20.04"
+https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-20-04
+
+As a prerequisite, you need to install Docker, you may use following tutorial:
+
+"How To Install and Use Docker on Ubuntu 20.04"
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 
 
